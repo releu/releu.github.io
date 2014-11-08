@@ -17,8 +17,6 @@ task :deploy do
   # save index
   save_body_to_file bro.get("/").body, "index.html"
 
-  system "mkdir posts"
-
   # save posts
   load_posts.each do |post|
     save_body_to_file bro.get("/posts/#{post.name}").body, "posts/#{post.name}.html"

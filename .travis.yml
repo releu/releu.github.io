@@ -4,7 +4,7 @@ script:
   - ssh-agent
   - ssh-add travis
   - git remote rm origin
-  - git remote add origin git@github.com/releu/releu.github.io.git
+  - git remote add origin git@github.com:releu/releu.github.io.git
   - git config --global user.email "releu+travis@me.com"
   - git config --global user.name "Releu Travis"
   - bundle
