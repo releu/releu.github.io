@@ -31,6 +31,6 @@ task :deploy do
   system "git add ."
   system "git commit -am 'publish'"
   system "git push origin #{branch}:gh-pages --force"
-  system "git checkout master"
+  system "git checkout engine"
   system "git branch -D #{branch}"
 end
