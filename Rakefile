@@ -29,7 +29,7 @@ task :deploy do
 
   # save images
   system "mv ./public/* ./"
-  system "git add ."
+  system "git add --all ."
   system "git commit -am 'publish'"
   system "git push origin #{branch}:master --force"
   system "git checkout engine"
