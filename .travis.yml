@@ -3,5 +3,5 @@ script:
   - chmod 600 .travis/deploy_key.pem
   - ssh-add .travis/deploy_key.pem
   - git remote add origin git@github.com:releu/releu.github.io.git
-  - bundle
+  - bundle 
   - rake deploy
