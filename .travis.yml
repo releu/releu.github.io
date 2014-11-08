@@ -1,7 +1,7 @@
 language: ruby
 script:
   - chmod 600 travis
-  - ssh-agent -s
+  - ssh-agent
   - ssh-add travis
   - bundle
   - bundle exec rake deploy
