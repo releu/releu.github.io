@@ -1,7 +1,6 @@
 task :deploy do
   require "securerandom"
   require "rack/test"
-  require "tilt"
   require "./blog.rb"
 
   branch = SecureRandom.hex

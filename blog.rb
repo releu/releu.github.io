@@ -1,3 +1,4 @@
+require "tilt"
 require "sinatra"
 require "slim"
 require "sass"
