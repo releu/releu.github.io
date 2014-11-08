@@ -3,6 +3,8 @@ script:
   - chmod 600 travis
   - ssh-agent
   - ssh-add travis
+  - git config --global user.email "releu+travis@me.com"
+  - git config --global user.name "Releu Travis"
   - bundle
   - bundle exec rake deploy
 
