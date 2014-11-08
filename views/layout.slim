@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title Ян Бернацки. Записки о дизайне
+    link rel="stylesheet" href="/application.css" media="all"
+
+  body
+    div class="wrapper"
+      header class="main-header"
+        h1 class="main-header-title"
+          a href="/" <em>Ян Бернацки</em> Записки о дизайне
+
+      div class="main-content"
+        == yield
+
+      div class="main-footer"
+        a href="https://twitter.com/ianbernatcki" @IanBernatcki
