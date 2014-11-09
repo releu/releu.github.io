@@ -6,7 +6,12 @@ require "sass"
 Post = Struct.new(:name, :title, :body)
 
 def load_posts
-  Dir["./posts/*.slim"].map do |post_path|
+  post_paths = Dir["./posts/*.slim"].sort_by do |post_path|
+    index = post_path[%r{\./posts/(\d+)-(.*)\.slim}, 1]
+    index.to_i
+  end
+
+  post_paths.map do |post_path|
     name = post_path[%r{\./posts/(\d+)-(.*)\.slim}, 2]
     title = File.read(post_path).lines.first.sub(/^- #/, "").strip
     body = Slim::Template.new(post_path).render
