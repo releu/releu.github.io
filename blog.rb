@@ -28,8 +28,9 @@ get "/" do
   slim :posts
 end
 
-get "/feed", :provides => "xml" do
+get "/feed" do
   @posts = load_posts
+  content_type :atom, :charset => "utf-8"
   slim :feed, :layout => false
 end
 
