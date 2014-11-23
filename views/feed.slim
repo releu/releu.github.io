@@ -1,0 +1,14 @@
+doctype xml
+rss version="2.0"
+  channel
+    title Ян Бернацки. Записки о дизайне
+    link http://releu.github.io/
+    description Личный блог
+
+    - @posts.each do |post|
+      item
+        title = post.title
+        description = post.description
+        pubDate = post.date
+        link = "http://releu.github.io/posts/#{post.name}"
+        guid = "http://releu.github.io/posts/#{post.name}"

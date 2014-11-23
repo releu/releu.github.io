@@ -25,6 +25,9 @@ task :deploy do
   # save stylesheet
   save_body_to_file bro.get("/application.css").body, "application.css"
 
+  # save feed
+  save_body_to_file bro.get("/feed").body, "feed.xml"
+
   # save images
   system "mv ./public/* ./"
   system "git add --all ."

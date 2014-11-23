@@ -3,7 +3,7 @@ require "sinatra"
 require "slim"
 require "sass"
 
-Post = Struct.new(:name, :title, :body)
+Post = Struct.new(:name, :title, :body, :description, :date)
 
 def load_posts
   post_paths = Dir["./posts/*.slim"].sort_by do |post_path|
@@ -13,15 +13,24 @@ def load_posts
 
   post_paths.map do |post_path|
     name = post_path[%r{\./posts/(\d+)-(.*)\.slim}, 2]
-    title = File.read(post_path).lines.first.sub(/^- #/, "").strip
+    config = File.read(post_path).lines.first(3)
+    title, desc, date = config.map do |line|
+      line.sub(/^- #/, "").strip
+    end
+    date = Date.parse(date).rfc822
     body = Slim::Template.new(post_path).render
-    Post.new(name, title, body)
+    Post.new(name, title, body, desc, date)
   end
 end
 
 get "/" do
   @posts = load_posts
   slim :posts
+end
+
+get "/feed", :provides => "xml" do
+  @posts = load_posts
+  slim :feed, :layout => false
 end
 
 get "/posts/:name" do

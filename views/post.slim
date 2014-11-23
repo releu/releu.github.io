@@ -2,7 +2,18 @@ article class="post"
   header
     h1 = @post.title
 
-  == @post.body
+  div class="post-content"
+    == @post.body
+
+  div class="post-subscribe"
+    div class="post-subscribe-title"
+      | Подпишись на новые публикации:
+    div class="post-subscribe-rss"
+      a href="/feed" RSS
+    div class="post-subscribe-or"
+      | или
+    == erb :mailchimp
+    div class="clearfix"
 
   div class="post-comments"
     div id="disqus_thread"
@@ -22,7 +33,6 @@ article class="post"
         strong Следующий пост:
         br
         a href="/posts/#{@next_post.name}" = @next_post.title
-
 
     - if @prev_post
       p

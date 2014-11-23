@@ -55,6 +55,10 @@ body {
   color: #000000;
 }
 
+.clearfix {
+  clear: both;
+}
+
 .wrapper {
   width: 780px;
   margin: 0 auto;
@@ -109,6 +113,10 @@ a {
     line-height: 54px;
     font-weight: bold;
   }
+}
+
+.post-content {
+  margin-bottom: 72px;
 
   h2 {
     font-weight: bold;
@@ -158,4 +166,79 @@ a {
   a {
     text-decoration: none;
   }
+}
+
+.post-subscribe {
+  padding: 32px 0;
+  margin-bottom: 72px;
+  padding-left: 52px;
+  border: 8px solid black;
+}
+
+#mc_embed_signup {
+  float: left;
+  margin-right: 20px;
+  width: 380px;
+
+  .mc-field-group {
+
+    input {
+      border: 1px solid black;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 24px;
+      line-height: 36px;
+      padding: 6px 20px 4px;
+      outline: none;
+      float: left;
+      width: 176px;
+      margin: 0;
+      margin-right: 20px;
+    }
+  }
+
+  #mc-embedded-subscribe {
+    float: left;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 24px;
+    line-height: 46px;
+    width: 140px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid black;
+    background: white;
+    font-weight: bold;
+  }
+}
+
+.post-subscribe-title {
+  margin-bottom: 16px;
+}
+
+.post-subscribe-rss {
+  float: left;
+  width: 140px;
+  text-align: center;
+  margin-right: 20px;
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 48px;
+    display: block;
+    border: 1px solid black;
+    color: black;
+    background: white;
+  }
+}
+
+.post-subscribe-or {
+  float: left;
+  width: 60px;
+  line-height: 48px;
+  text-align: center;
+  margin-right: 20px;
+
 }
