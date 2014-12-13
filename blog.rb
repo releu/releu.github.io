@@ -25,7 +25,17 @@ end
 
 get "/" do
   @posts = load_posts
-  slim :posts
+  @post = @posts.last
+
+  idx = @posts.find_index { |p| p.name == @post.name }
+
+  @post = @posts[idx]
+  if idx > 0
+    @prev_post = @posts[idx - 1]
+  end
+  @next_post = @posts[idx + 1]
+
+  slim :post
 end
 
 get "/feed" do

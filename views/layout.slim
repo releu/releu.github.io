@@ -3,19 +3,73 @@ html
   head
     title Ян Бернацки. Записки о дизайне
     meta charset="utf-8"
+    link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"
+    meta content="width=device-width, initial-scale=1.0" name="viewport"
     link rel="stylesheet" href="/application.css" media="all"
     link href="/feed" type="application/atom+xml" rel="alternate" title="Ян Бернацки. Записки о дизайне"
+    script type="text/javascript" src="//code.jquery.com/jquery-2.1.0.min.js"
+    javascript:
+      $(function() {
+        $(document.body).on("keypress", function(e) {
+          if (e.which == 167) {
+            $(document.body).toggleClass("debug");
+          }
+        });
 
+        var heightFixed = false;
+
+        $(".main-header-menu-button").on("click", function() {
+          if (!heightFixed) {
+            var maxMenuHeight = $(".main-menu").height() - $(".main-menu-title").outerHeight(true);
+            $(".main-menu-items").height(maxMenuHeight);
+
+            heightFixed = true;
+          }
+
+          $(".main-menu").toggle();
+        });
+
+        $(".post-content img").each(function(i, html) {
+          var img = $(html);
+          img.load(function(){
+            img.height(img.height() - img.height() % 18);
+          });
+        });
+      });
+  script src="//use.typekit.net/qyv7eys.js"
+  javascript:
+    try{Typekit.load();}catch(e){}
   body
     div class="wrapper"
       header class="main-header"
+        div class="main-header-menu"
+          a href="#" class="main-header-menu-button"
+            i class="fa fa-bars"
         h1 class="main-header-title"
-          a href="/" <em>Ян Бернацки</em> Записки о дизайне
+          | Ян Бернацки <strong>&middot;</strong> Записки о дизайне
+        div class="clearfix"
+
+        div class="main-header-twitter"
+          a href="/feed"
+            i class="fa fa-rss"
+
+      div class="main-menu"
+        div class="main-menu-title" Содержание:
+
+        ul class="main-menu-items"
+          - @posts.reverse_each do |post|
+            li
+              div class="main-menu-items-item-title"
+                - if post == @post
+                  strong
+                    a href="/posts/#{post.name}" = post.title
+
+                - else
+                  a href="/posts/#{post.name}" = post.title
+
+              div class="main-menu-items-item-time" = Date.parse(post.date)
 
       div class="main-content"
         == yield
-
-      div class="main-footer"
-        a href="https://twitter.com/ianbernatcki" @IanBernatcki
 
     <!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter27077201 = new Ya.Metrika({id:27077201, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/27077201" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
