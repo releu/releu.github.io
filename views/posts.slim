@@ -1,0 +1,4 @@
+ul class="posts"
+  - @posts.reverse_each do |post|
+    li
+      a href="/posts/#{post.name}" = post.title

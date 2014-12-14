@@ -4,7 +4,17 @@ article class="post"
 
   div class="post-content"
     == @post.body
-  
+
+  div class="post-subscribe"
+    div class="post-subscribe-title"
+      | Подписка на новые публикации:
+    div class="post-subscribe-rss"
+      a href="/feed" RSS
+    div class="post-subscribe-or"
+      | или
+    == erb :mailchimp
+    div class="clearfix"
+
   div class="post-comments"
     div id="disqus_thread"
 
