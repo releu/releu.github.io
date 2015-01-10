@@ -221,7 +221,7 @@ a {
 }
 
 .post-content {
-  margin-bottom: 72px;
+  margin-bottom: 90px;
 
   h2 {
     font-weight: bold;
@@ -229,6 +229,14 @@ a {
 
   p, h2, h3, h4, h5, h6, ul, ol, blockquote {
     margin-bottom: 36px;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: bold;
   }
 
   p {
@@ -255,24 +263,33 @@ a {
 }
 
 .post-nav {
-  padding-bottom: 72px;
-
-  p {
-    margin-bottom: 36px;
-  }
+  padding-bottom: 90px;
 
   strong {
+    font-weight: bold;
+  }
+}
+
+.post-author {
+  margin-bottom: 36px;
+  text-align: center;
+
+  span {
+    margin-right: 16px;
     font-weight: bold;
   }
 
   a {
     text-decoration: none;
-    border-bottom: 1px solid;
-  }
-}
+    display: inline-block;
+    border-bottom: 2px dashed;
+    margin: 0 20px 0 0;
+    line-height: 28px;
 
-.post-comments {
-  margin-bottom: 72px;
+    i {
+      margin-right: 8px;
+    }
+  }
 }
 
 @media only screen and (max-device-width : 568px) {

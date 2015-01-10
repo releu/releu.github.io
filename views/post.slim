@@ -4,28 +4,19 @@ article class="post"
 
   div class="post-content"
     == @post.body
-  
-  div class="post-comments"
-    div id="disqus_thread"
 
-  javascript:
-    var disqus_shortname = 'releu';
-    var disqus_identifier = '#{@post.name}';
-    (function() {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+  - if @prev_post
+    nav class="post-nav"
+      strong Предыдущий пост:
+      br
+      a href="/posts/#{@prev_post.name}" = @prev_post.title
 
-  nav class="post-nav"
-    - if @next_post
-      p
-        strong Следующий пост:
-        br
-        a href="/posts/#{@next_post.name}" = @next_post.title
+  footer
+    div class="post-author"
+      a href="mailto:releu+blog@icloud.com?subject=RE: #{@post.title}"
+        i class="fa fa-envelope-o"
+        | почта
 
-    - if @prev_post
-      p
-        strong Предыдущий пост:
-        br
-        a href="/posts/#{@prev_post.name}" = @prev_post.title
+      a href="https://twitter.com/releu_" target="_blank"
+        i class="fa fa-twitter"
+        | твиттер

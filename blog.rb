@@ -3,7 +3,7 @@ require "sinatra"
 require "slim"
 require "sass"
 
-Post = Struct.new(:name, :title, :body, :description, :date)
+Post = Struct.new(:id, :name, :title, :body, :description, :date)
 
 def load_posts
   post_paths = Dir["./posts/*.slim"].sort_by do |post_path|
@@ -12,6 +12,7 @@ def load_posts
   end
 
   post_paths.map do |post_path|
+    id = post_path[%r{\./posts/(\d+)-(.*)\.slim}, 1]
     name = post_path[%r{\./posts/(\d+)-(.*)\.slim}, 2]
     config = File.read(post_path).lines.first(3)
     title, desc, date = config.map do |line|
@@ -19,7 +20,7 @@ def load_posts
     end
     date = Date.parse(date).rfc822
     body = Slim::Template.new(post_path).render
-    Post.new(name, title, body, desc, date)
+    Post.new(id, name, title, body, desc, date)
   end
 end
 
