@@ -16,17 +16,9 @@ html
           }
         });
 
-        var heightFixed = false;
-
-        $(".main-header-menu-button").on("click", function() {
-          if (!heightFixed) {
-            var maxMenuHeight = $(".main-menu").height() - $(".main-menu-title").outerHeight(true);
-            $(".main-menu-items").height(maxMenuHeight);
-
-            heightFixed = true;
-          }
-
+        $(".main-header-menu-button").on("click", function(e) {
           $(".main-menu").toggle();
+          e.preventDefault();
         });
 
         $(".post-content img").each(function(i, html) {
